@@ -106,5 +106,9 @@ func getStructField(v *EVS, field string) string {
 	return string(f.String())
 }
 
-
+// Delete will permanently delete a particular evs based on its unique ID.
+func Delete(c *gophercloud.ServiceClient, id string) (r DeleteResult) {
+	_, r.Err = c.Delete(EVSresourceURL(c, id), nil)
+	return
+}
 

@@ -6,24 +6,22 @@ import (
 
 )
 
-type Links struct {
+/*type Links struct {
 //	href string `json:"href"`
 //	rel string `json:"rel"`
 href string `json:"href"`
 rel string `json:"rel"`
 
-}
+}*/
 
-type metadata struct{
-	readonly string `json:"readonly"`
-}
+
 type EVS struct{
 
 	//ID string `json:"id"`
 
 	ID string `json:"id"`
 
-	Link []Links `json:"links"`
+	Link interface{} `json:"links"`
 
 	Name string `json:"name"`
 
@@ -31,7 +29,7 @@ type EVS struct{
 
 	Availability_zone string `json:"availability_zone"`
 
-	created_at string `json:"created_at"`
+	Created_at string `json:"created_at"`
 
 	Volume_type string `json:"volume_type"`
 
@@ -56,13 +54,13 @@ type EVS struct{
 
 	Os_vol_host_attr string `json:"os-vol-host-attr:host"`
 
-	//Metadata []metadata `json:"metadata"`
-/*
-	Volume_image_metadata string `json:"volume_image_metadata"`
+	Metadata interface{} `json:"metadata"`
 
-	Metadata map[string]string `json:"metadata"`
+	Volume_image_metadata interface{} `json:"volume_image_metadata"`
 
-*/
+
+
+
 }
 
 func (r EVSPage) NextPageURL() (string, error) {
@@ -122,3 +120,6 @@ type commonResult struct {
 	gophercloud.Result
 }
 
+type DeleteResult struct {
+	gophercloud.ErrResult
+}
